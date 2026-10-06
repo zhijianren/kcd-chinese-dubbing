@@ -50,13 +50,13 @@ LOG = logging.getLogger("kcd")
 # 默认配置（会被 kcd_indextts_config.json 覆盖；这里不写死任何模型路径之外的假设）
 # --------------------------------------------------------------------------- #
 DEFAULT_CONFIG = {
-    "input_root": "/home/caijin/private/text2audio/voicein",
-    "output_root": "/home/caijin/private/text2audio/voiceout",
-    "xml_path": "/home/caijin/private/text2audio/KDCCDM_Script/text_ui_dialog.xml",
-    "speaker_map_path": "/home/caijin/private/text2audio/KDCCDM_Script/speaker_map.json",
-    "ref_dir": "/home/caijin/private/text2audio/KDCCDM_Script/refs",
-    "work_dir": "/home/caijin/private/text2audio/KDCCDM_Script/work",
-    "log_dir": "/home/caijin/private/text2audio/KDCCDM_Script/logs",
+    "input_root": "./voicein",
+    "output_root": "./voiceout",
+    "xml_path": "./text_ui_dialog.xml",
+    "speaker_map_path": "./speaker_map.json",
+    "ref_dir": "./refs",
+    "work_dir": "./work",
+    "log_dir": "./logs",
 
     "parts": ["english-part0", "english-part1", "english-part2",
               "english-part3", "IPL_english"],
@@ -102,10 +102,10 @@ DEFAULT_CONFIG = {
     },
 
     "indextts": {
-        "code_root": "/home/caijin/private/text2audio/IndexTTS2",
+        "code_root": "<IndexTTS2 目录>",
         "extra_python_paths": [],
-        "cfg_path": "/home/caijin/private/text2audio/IndexTTS2/checkpoints/config.yaml",
-        "model_dir": "/home/caijin/private/text2audio/IndexTTS2/checkpoints",
+        "cfg_path": "<IndexTTS2 目录>/checkpoints/config.yaml",
+        "model_dir": "<IndexTTS2 目录>/checkpoints",
         "device": "cuda:0",
         # 依次尝试 (模块, 类名)，适配不同版本的 IndexTTS / IndexTTS2 / IndexTTS2.5
         "class_candidates": [

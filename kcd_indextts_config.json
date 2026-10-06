@@ -1,138 +1,118 @@
 {
- "_readme": [
-  "KCD2 中文配音流水线配置 (IndexTTS 2.x)。",
-  "只需要改路径类字段；模型相关全部在这里，脚本里没有写死。",
-  "命令行 --part/--limit/--shard/--device 会覆盖这里的 parts 等默认值。"
- ],
- "input_root": "/home/caijin/private/text2audio/voicein",
- "output_root": "/home/caijin/private/text2audio/voiceout",
- "xml_path": "/home/caijin/private/text2audio/KDCCDM_Script/text_ui_dialog.xml",
- "speaker_map_path": "/home/caijin/private/text2audio/KDCCDM_Script/speaker_map.json",
- "ref_dir": "/home/caijin/private/text2audio/KDCCDM_Script/refs",
- "work_dir": "/home/caijin/private/text2audio/KDCCDM_Script/work",
- "log_dir": "/home/caijin/private/text2audio/KDCCDM_Script/logs",
- "parts": [
-  "english-part",
-  "IPL_english"
- ],
- "audio_ext": ".ogg",
- "copy_other_files": false,
- "speaker_regex": "^([^_]+)_",
- "max_strip_tokens": 4,
- "speaker_aliases": {},
- "ref": {
-  "min_text_chars": 15,
-  "max_text_chars": 130,
-  "min_sec": 2.5,
-  "max_sec": 9.0,
-  "probe_candidates": 40,
-  "wav_sr": 24000,
-  "target_bytes_per_sec": 6750.0,
-  "prefer_neutral": true,
-  "neutral_min_score": 1.0
- },
- "emotion": {
-  "emo_source": "line",
-  "emo_alpha": 1.0,
-  "emo_vector": null,
-  "spk_source": "line",
-  "line_min_sec": 0.8
- },
- "indextts": {
-  "code_root": "/home/caijin/private/text2audio/IndexTTS2",
-  "extra_python_paths": [],
-  "cfg_path": "/home/caijin/private/text2audio/IndexTTS2/checkpoints/config.yaml",
-  "model_dir": "/home/caijin/private/text2audio/IndexTTS2/checkpoints",
-  "device": "cuda:0",
-  "class_candidates": [
-   [
-    "indextts.infer_v2_5",
-    "IndexTTS2"
-   ],
-   [
-    "indextts.infer_v2_5",
-    "IndexTTS2_5"
-   ],
-   [
-    "indextts.infer_v2",
-    "IndexTTS2"
-   ],
-   [
-    "indextts.infer",
-    "IndexTTS"
-   ]
+  "_readme": [
+    "KCD2 中文配音流水线配置 (IndexTTS 2.x)。",
+    "只开源了代码，模型权重、游戏语音与文本请自行准备（见 README）。",
+    "下面所有路径都是相对本文件所在目录的相对路径，按自己的目录结构调整即可。",
+    "命令行 --part/--limit/--shard/--device 会覆盖这里的 parts 等默认值。"
   ],
-  "init_kwargs": {
-   "use_bf16": true,
-   "use_fp16": false,
-   "use_cuda_kernel": false,
-   "use_deepspeed": false
+
+  "input_root": "./voicein",
+  "output_root": "./voiceout",
+  "xml_path": "./text_ui_dialog.xml",
+  "speaker_map_path": "./speaker_map.json",
+  "ref_dir": "./refs",
+  "work_dir": "./work",
+  "log_dir": "./logs",
+
+  "parts": ["english-part0", "english-part1", "english-part2", "english-part3", "IPL_english"],
+  "audio_ext": ".ogg",
+  "copy_other_files": false,
+
+  "speaker_regex": "^([^_]+)_",
+  "max_strip_tokens": 4,
+  "speaker_aliases": {},
+
+  "ref": {
+    "min_text_chars": 15,
+    "max_text_chars": 130,
+    "min_sec": 2.5,
+    "max_sec": 9.0,
+    "probe_candidates": 40,
+    "wav_sr": 24000,
+    "target_bytes_per_sec": 6750.0,
+    "prefer_neutral": true,
+    "neutral_min_score": 1.0
   },
-  "infer_kwargs": {
-   "verbose": false,
-   "max_text_tokens_per_segment": 120
+
+  "indextts": {
+    "code_root": "./IndexTTS2",
+    "extra_python_paths": [],
+    "cfg_path": "./IndexTTS2/checkpoints/config.yaml",
+    "model_dir": "./IndexTTS2/checkpoints",
+    "device": "cuda:0",
+    "class_candidates": [
+      ["indextts.infer_v2_5", "IndexTTS2"],
+      ["indextts.infer_v2_5", "IndexTTS2_5"],
+      ["indextts.infer_v2", "IndexTTS2"],
+      ["indextts.infer", "IndexTTS"]
+    ],
+    "init_kwargs": {
+      "use_bf16": true,
+      "use_fp16": false,
+      "use_cuda_kernel": false,
+      "use_deepspeed": false
+    },
+    "infer_kwargs": {
+      "verbose": false,
+      "max_text_tokens_per_segment": 120
+    },
+    "allow_unknown_infer_kwargs": false,
+    "lang": "ZH",
+    "duration_factor": 1.0,
+    "use_duration_factor": true,
+    "required_files": ["config.yaml", "gpt.pth", "s2mel.pth", "codec.pth", "bpe.model", "feat1.pt", "feat2.pt", "wav2vec2bert_stats.pt"],
+    "required_dirs": ["qwen0.6bemo4-merge"],
+    "sample_rate_fallback": 22050
   },
-  "allow_unknown_infer_kwargs": false,
-  "lang": "ZH",
-  "duration_factor": 1.0,
-  "use_duration_factor": true,
-  "required_files": [
-   "config.yaml",
-   "gpt.pth",
-   "s2mel.pth",
-   "codec.pth",
-   "bpe.model",
-   "feat1.pt",
-   "feat2.pt",
-   "wav2vec2bert_stats.pt"
-  ],
-  "required_dirs": [
-   "qwen0.6bemo4-merge"
-  ],
-  "sample_rate_fallback": 22050
- },
- "text": {
-  "max_chars_per_segment": 100,
-  "max_segments": 8,
-  "min_cjk_chars": 1
- },
- "align": {
-  "enabled": true,
-  "tolerance": 0.03,
-  "atempo_min": 0.8,
-  "atempo_max": 1.5,
-  "global_speed": 1.0,
-  "max_target_sec": 30.0,
-  "pad_to_target": true,
-  "allow_overflow_sec": 0.2,
-  "use_native_speed": false,
-  "native_trigger": 0.45,
-  "native_min": 0.55,
-  "native_max": 1.8
- },
- "encode": {
-  "ffmpeg": "ffmpeg",
-  "ffprobe": "ffprobe",
-  "sample_rate": 48000,
-  "channels": 1,
-  "bitrate": "54k",
-  "encoder_chain": [
-   "soundfile_vorbis",
-   "ffmpeg_libvorbis",
-   "ffmpeg_vorbis",
-   "ffmpeg_libopus"
-  ],
-  "min_output_bytes": 512,
-  "timeout_sec": 300
- },
- "run": {
-  "limit": 0,
-  "group_by_speaker": true,
-  "empty_cache_every": 200,
-  "max_consecutive_failures": 20,
-  "copy_on_tts_failure": false,
-  "progress_every": 200,
-  "keep_temp_wav": false,
-  "cleanup_tmp_older_than_hours": 24
- }
+
+  "emotion": {
+    "emo_source": "line",
+    "emo_alpha": 1.0,
+    "emo_vector": null,
+    "spk_source": "line",
+    "line_min_sec": 0.8
+  },
+
+  "text": {
+    "max_chars_per_segment": 100,
+    "max_segments": 8,
+    "min_cjk_chars": 1
+  },
+
+  "align": {
+    "enabled": true,
+    "tolerance": 0.03,
+    "atempo_min": 0.80,
+    "atempo_max": 1.50,
+    "global_speed": 1.0,
+    "max_target_sec": 30.0,
+    "pad_to_target": true,
+    "allow_overflow_sec": 0.20,
+    "use_native_speed": false,
+    "native_trigger": 0.45,
+    "native_min": 0.55,
+    "native_max": 1.80
+  },
+
+  "encode": {
+    "ffmpeg": "ffmpeg",
+    "ffprobe": "ffprobe",
+    "sample_rate": 48000,
+    "channels": 1,
+    "bitrate": "54k",
+    "encoder_chain": ["soundfile_vorbis", "ffmpeg_libvorbis", "ffmpeg_vorbis", "ffmpeg_libopus"],
+    "min_output_bytes": 512,
+    "timeout_sec": 300
+  },
+
+  "run": {
+    "limit": 0,
+    "group_by_speaker": true,
+    "empty_cache_every": 200,
+    "max_consecutive_failures": 20,
+    "copy_on_tts_failure": false,
+    "progress_every": 200,
+    "keep_temp_wav": false,
+    "cleanup_tmp_older_than_hours": 24
+  }
 }

@@ -3,10 +3,10 @@
 [![Python](https://img.shields.io/badge/Python-3.10-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-给《天国：拯救》和《天国：拯救 2》做中文配音的流水线。
+基于IndexTTS2.5的《天国：拯救》和《天国：拯救 2》中文配音项目。
 
-游戏原本只有英配。这个脚本把英文语音转成中文语音——**用它自己的英文原音当参考**，
-所以中文听起来是同一个演员在说，而不是随便找个 AI 声音念稿。
+游戏原本只有英配。本脚本**基于英文原音当参考**把英文语音转成中文语音，
+而不是随便找个 AI 声音念稿。
 
 二代做了 30 万条。序章、主线、支线、DLC、战斗喊话，全做了。
 

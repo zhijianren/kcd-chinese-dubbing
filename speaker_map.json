@@ -1,0 +1,419 @@
+{
+ "_readme": [
+  "每个说话人一条记录，决定这个说话人用哪个参考音频（音色）。",
+  "ref_audio: 参考音频 wav 绝对路径（建议用 refs/ 下的文件）。",
+  "ref_text : 参考音频对应的英文文本（部分版本会让模型用它，可选）。",
+  "src_ogg  : 参考音频的原始英文 ogg（方便回溯）。",
+  "duration : 参考音频时长（秒）。",
+  "files    : 该说话人的音频文件数量（统计信息）。",
+  "use      : 指向另一个说话人代号，表示共用同一个音色（用于把同一演员的多个代号合并）。",
+  "locked   : true 时，map / set-speaker 不会自动覆盖这条记录。",
+  "",
+  "生成方式: python kcd_indextts.py map",
+  "手动修正: python kcd_indextts.py set-speaker --speaker tmck --src-ogg /abs/path/x.ogg --lock",
+  "          （也可以直接编辑本文件，把 use 填成另一个说话人代号）",
+  "default  : 找不到参考音频的说话人，统一用这里的音色（可为空，为空则复制英文）。"
+ ],
+ "default": {
+  "ref_audio": null,
+  "ref_text": null
+ },
+ "speakers": {
+  "amon": {
+   "duration": 5.135,
+   "files": 979,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/amon.wav",
+   "ref_text": "Help me! That bastard poured something into our barrel! It must've been poison!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/kotliky/amon_npc__npc_repor_xxx_8Yo4.ogg",
+   "use": null
+  },
+  "aric": {
+   "duration": 5.825,
+   "files": 813,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/aric.wav",
+   "ref_text": "Hm… No, no… There's definitely something off about it.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/kotliky/aric_npc__npc_oznac_no_tak_to__3tTd.ogg",
+   "use": null
+  },
+  "bbor": {
+   "duration": 5.0,
+   "files": 942,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/bbor.wav",
+   "ref_text": "Help! That brat poured something into our food. He must be trying to poison us!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/kotliky/bbor_npc__npc_repor_travic_nec_KFvE.ogg",
+   "use": null
+  },
+  "bcas": {
+   "duration": 5.302,
+   "files": 1242,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/bcas.wav",
+   "ref_text": "So you like mutilating animals, do you?! I'll mutilate you, you whoreson!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/nasili_na_zviratech/bcas_assa_straz_vid_libi_se_ti_JxLB.ogg",
+   "use": null
+  },
+  "ccla": {
+   "duration": 5.673,
+   "files": 970,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/ccla.wav",
+   "ref_text": "Where are you taking her? Eh, well, I'll just pretend I didn't see anything.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/noseni_mrtvoly/ccla_npc__npc_vidi__kam_ji_nes_5EYd.ogg",
+   "use": null
+  },
+  "cduk": {
+   "duration": 5.46,
+   "files": 938,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/cduk.wav",
+   "ref_text": "Hey, I want to get a good night of sleep. So, shove off and go lurk around somewhere else!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/trespass/cduk_npc__npc_vyhan_hele_ja_se_QkG1.ogg",
+   "use": null
+  },
+  "cin": {
+   "duration": 3.104,
+   "files": 312,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/cin.wav",
+   "ref_text": "Aye… oh… I'll manage!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/trosecko/prepadeni/cin__henry_zvladnu_to_uka_zLBi.ogg",
+   "use": null
+  },
+  "dbro": {
+   "duration": 5.358,
+   "files": 988,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/dbro.wav",
+   "ref_text": "That idiot can't ride a horse for shit and almost ran me over. To the pillory with him!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/srazeni_konem/dbro_npc__npc_hlasi_ten_blbec__SKke.ogg",
+   "use": null
+  },
+  "dcol": {
+   "duration": 5.364,
+   "files": 1308,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/dcol.wav",
+   "ref_text": "I've been robbed! I've no idea who did it, but I'm fucking pissed off!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/theft/dcol_npc__npc_repor_byl_jsem_v_AhDR.ogg",
+   "use": null
+  },
+  "dosg": {
+   "duration": 5.438,
+   "files": 1008,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/dosg.wav",
+   "ref_text": "Aye, I know the crossroads with the birch tree. That's a long fucking way from here.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/trosecko/zachrana/dosg_dial_patraci_jo_to_rozces_zMEH.ogg",
+   "use": null
+  },
+  "drus": {
+   "duration": 5.32,
+   "files": 1057,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/drus.wav",
+   "ref_text": "This is no place to leave corpses lying around. Someone tidy it up, for fuck's sake!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/reakce_hracovych_pratel/drus_such_suchy_cer_zdechliny__Ax8U.ogg",
+   "use": null
+  },
+  "dzap": {
+   "duration": 5.271,
+   "files": 1287,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/dzap.wav",
+   "ref_text": "Damn it! With the luck I have, if I went to hang myself the rope would snap.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/minihry/dzap_krov_kostkar_k_zatracene__Wk4w.ogg",
+   "use": null
+  },
+  "emac": {
+   "duration": 5.125,
+   "files": 624,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/emac.wav",
+   "ref_text": "Fuck… I should go and see what that noise was.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/kutnohorsko/zoufalaObranaZaBohutu/emac_bohu_bohuta_pl_kurva_mel__P4XX.ogg",
+   "use": null
+  },
+  "gand": {
+   "duration": 5.506,
+   "files": 1465,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/gand.wav",
+   "ref_text": "I'm not gonna search for it high and low, I'm sure it'll come back on its own.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/plaseni_zvirat/gand_npc__npc_nenas_po_vsech_c_EtPy.ogg",
+   "use": null
+  },
+  "ggud": {
+   "duration": 5.647,
+   "files": 958,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/ggud.wav",
+   "ref_text": "Ty vole… Is that foreigner really dead? Should I poke him with a stick just to be certain?",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/noseni_mrtvoly/ggud_npc__npc_vidi__ty_vole_je_wsiO.ogg",
+   "use": null
+  },
+  "icha": {
+   "duration": 5.185,
+   "files": 1002,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/icha.wav",
+   "ref_text": "Hmm. I thought the shots came from over here, but you're the only one here…",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/reakce_na_strelbu/icha_hled_npc_hleda_hmm_myslel_emOS.ogg",
+   "use": null
+  },
+  "jbea": {
+   "duration": 5.033,
+   "files": 1292,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/jbea.wav",
+   "ref_text": "That fellah's crippled my dog. He's mad. You'd better take him in before I bash his head in.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/nasili_na_zviratech/jbea_assa_svedek_re_doplnit3_xVb1.ogg",
+   "use": null
+  },
+  "jcom": {
+   "duration": 5.395,
+   "files": 920,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/jcom.wav",
+   "ref_text": "Quick! Hurry! He killed a cow over there, I saw it!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/nasili_na_zviratech/jcom_vraz_svedek_re_straz_hone_UYBh.ogg",
+   "use": null
+  },
+  "jelm": {
+   "duration": 5.281,
+   "files": 991,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/jelm.wav",
+   "ref_text": "Christ, that woman is drunk out of her mind! Does her husband let her booze that much?",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/noseni_mrtvoly/jelm_npc__npc_vidi__prokrista__oKzX.ogg",
+   "use": null
+  },
+  "jhig1": {
+   "duration": 5.237,
+   "files": 959,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/jhig1.wav",
+   "ref_text": "Sakra, where could I have put it? It should be here! Someone must've taken it!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/lockpick/jhig1_npc__npc_nahod_sakra_kam__lJqA.ogg",
+   "use": null
+  },
+  "jmar": {
+   "duration": 5.22,
+   "files": 936,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/jmar.wav",
+   "ref_text": "Alright then, have it your way, you bastard!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/combat/reakce_pri_vytazeni_zbrane_v_unarmed_combatu/jmar_npc__npc_je_v__jak_chces__X2sw.ogg",
+   "use": null
+  },
+  "jmil": {
+   "duration": 5.391,
+   "files": 926,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/jmil.wav",
+   "ref_text": "You damn dog! You're out here doing your best bear impression, all for nothing.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/reakce_na_psa/jmil_npc__npc_slysi_fuj_psisko_aeRj.ogg",
+   "use": null
+  },
+  "jnun": {
+   "duration": 5.393,
+   "files": 948,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/jnun.wav",
+   "ref_text": "You've picked a bad time to be strolling about here. Don't you know what's been going on here recently?",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/trespass/jnun_npc__npc_vidi__to_tady_mu_HF18.ogg",
+   "use": null
+  },
+  "jpar": {
+   "duration": 5.553,
+   "files": 943,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/jpar.wav",
+   "ref_text": "Where are you?! Why don't you pop your head out from your hiding place so I can smash it in, you bastard?!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/dialogs_to_include/jpar_assa_npc_hleda_kde_ses_uk_9hFB.ogg",
+   "use": null
+  },
+  "koup": {
+   "duration": 2.562,
+   "files": 12,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/koup.wav",
+   "ref_text": "I'm more worried about it being too deep.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/trosecko/prepadeni/koup_ptacek_teda_nemels_v_88TK.ogg",
+   "use": null
+  },
+  "ldal": {
+   "duration": 3.225,
+   "files": 979,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/ldal.wav",
+   "ref_text": "I yield, enough!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/trosecko/prepadeni/ldal_vyho_ptacek_vzdavam_se_do_VOx5.ogg",
+   "use": null
+  },
+  "mbis": {
+   "duration": 6.591,
+   "files": 927,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/mbis.wav",
+   "ref_text": "Where are you?! Show yourself, you swine! I'll kick your arse!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/dialogs_to_include/mbis_assa_npc_hleda_kde_ses_uk_oDSQ.ogg",
+   "use": null
+  },
+  "mpit": {
+   "duration": 5.207,
+   "files": 920,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/mpit.wav",
+   "ref_text": "You weren't looking to steal something, were you? I'd better keep a closer eye on you.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/rozpoznavani/mpit_npc__npc_stabi_nechtel_js_w4OT.ogg",
+   "use": null
+  },
+  "pcol": {
+   "duration": 5.155,
+   "files": 1002,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/pcol.wav",
+   "ref_text": "It's not here… Fucking thief! It's decent folks that suffer…",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/lockpick/pcol_npc__npc_cilen_neni_to_ta_A7M6.ogg",
+   "use": null
+  },
+  "pdea": {
+   "duration": 5.523,
+   "files": 992,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/pdea.wav",
+   "ref_text": "I… I'll stay with you, friend. Until someone comes and takes care of you.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/mrtvola/pdea_npc__npc_vidi__ja_zustanu_ftXu.ogg",
+   "use": null
+  },
+  "phos2": {
+   "duration": 5.185,
+   "files": 919,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/phos2.wav",
+   "ref_text": "Bringing a weapon to a fistfight, eh, you prick? I'll show you!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/combat/reakce_pri_vytazeni_zbrane_v_unarmed_combatu/phos2_npc__npc_je_v__tahas_zbra_ueT5.ogg",
+   "use": null
+  },
+  "prij": {
+   "duration": 6.2,
+   "files": 2,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/prij.wav",
+   "ref_text": "Come on, fellows! We'll camp here on the bank! At least we can bathe.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/trosecko/prepadeni/prij_ptacek_pojdte_chlapi_VAp7.ogg",
+   "use": null
+  },
+  "rkie": {
+   "duration": 5.227,
+   "files": 922,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/rkie.wav",
+   "ref_text": "Alright... I accept... But I won't be so forgiving next time!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/combat/prijmuti_vzdavani_bark/rkie_prij_npc_akcep_dobre_prij_rm4G.ogg",
+   "use": null
+  },
+  "rlaz": {
+   "duration": 5.15,
+   "files": 1007,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/rlaz.wav",
+   "ref_text": "I wouldn't have rolled in the hay with so many girls if I spent my time just thinking about it.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/trosecko/prepadeni/rlaz_poly_zbrojnos__spravne_ja_a0Ts.ogg",
+   "use": null
+  },
+  "rmmc": {
+   "duration": 5.467,
+   "files": 929,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/rmmc.wav",
+   "ref_text": "Guards! You have to catch him! He'll hurt someone! It was that young fellah who freed him!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/osvobozeni_z_pranyre/rmmc_sved_npc_repor_straznej_m_zDSY.ogg",
+   "use": null
+  },
+  "sagr": {
+   "duration": 5.173,
+   "files": 950,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/sagr.wav",
+   "ref_text": "Alright... I accept... But I won't be so forgiving next time!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/combat/prijmuti_vzdavani_bark/sagr_prij_npc_akcep_dobre_prij_rm4G.ogg",
+   "use": null
+  },
+  "sbar": {
+   "duration": 5.485,
+   "files": 970,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/sbar.wav",
+   "ref_text": "Where are you taking her? Eh, well, I'll just pretend I didn't see anything.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/noseni_mrtvoly/sbar_npc__npc_vidi__kam_ji_nes_5EYd.ogg",
+   "use": null
+  },
+  "setk": {
+   "duration": 3.675,
+   "files": 17,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/setk.wav",
+   "ref_text": "Halt! What are you after here?",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/trosecko/prepadeni/setk_hejtman_t_stat_co_ta_9P6j.ogg",
+   "use": null
+  },
+  "smoo": {
+   "duration": 5.989,
+   "files": 920,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/smoo.wav",
+   "ref_text": "Have I gone mad? Where is it? This doesn't make sense! Someone took it!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/lockpick/smoo_npc__npc_nahod_to_sem_bla_oBDD.ogg",
+   "use": null
+  },
+  "sphe": {
+   "duration": 5.578,
+   "files": 901,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/sphe.wav",
+   "ref_text": "Ma knows what she's doing, and that's the truth. I reckon she could bring the dead back to life.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/trosecko/zachrana/sphe_pavl_pavlena_d_to_vis_mam_ZmGk.ogg",
+   "use": null
+  },
+  "syou": {
+   "duration": 5.158,
+   "files": 1016,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/syou.wav",
+   "ref_text": "You should have yielded! Now we'll display your corpse on the pillory!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/combat/skirmish_barks/syou_idle_soldier_m_mel_jsi_se_oi6E.ogg",
+   "use": null
+  },
+  "tgra": {
+   "duration": 5.097,
+   "files": 954,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/tgra.wav",
+   "ref_text": "He ran into me with his horse! Give him a few good whips of the cane!",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/open_world/crime_reaction_barks/srazeni_konem/tgra_npc__npc_hlasi_najel_do_m_BPhZ.ogg",
+   "use": null
+  },
+  "tmck": {
+   "duration": 5.333,
+   "files": 1700,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/tmck.wav",
+   "ref_text": "You must have been seeing double. As I recall, there were two.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/trosecko/zachrana/tmck_snid_henry_co_si_pamatuju_3xFq.ogg",
+   "use": null
+  },
+  "zave": {
+   "duration": 4.0,
+   "files": 5,
+   "locked": false,
+   "ref_audio": "/home/caijin/private/text2audio/KDCCDM_Script/refs/zave.wav",
+   "ref_text": "Man makes plans and God laughs.",
+   "src_ogg": "/home/caijin/private/text2audio/voicein/IPL_english/dialog/kutnohorsko/zoufalaObranaZaBohutu/zave_bohuta_tak_clovek_pl_N3BP.ogg",
+   "use": null
+  }
+ }
+}
